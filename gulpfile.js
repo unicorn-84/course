@@ -8,12 +8,24 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
+const browserSync = require('browser-sync').create();
 
-const isDevelopment = false;
+const isDevelopment = true;
 
 gulp.task('clean', (callback) => {
   del('./build');
   callback();
+});
+
+gulp.task('serve', () => {
+  browserSync.init({
+    server: './build',
+  });
+  browserSync.watch('./build/**/*.*', (event) => {
+    if (event === 'change') {
+      browserSync.reload();
+    }
+  });
 });
 
 gulp.task('html', () =>
