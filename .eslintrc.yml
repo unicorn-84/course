@@ -1,0 +1,10 @@
+extends: airbnb-base
+rules:
+  linebreak-style: "off"
+  quotes:
+    - error
+    - single
+env:
+    browser: true
+    node: true
+    es6: true
