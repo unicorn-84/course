@@ -74,3 +74,11 @@ gulp.task('scripts', () =>
     .pipe(gulp.dest('./build/scripts')),
 );
 gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'html')));
+
+gulp.task('watch', () => {
+  gulp.watch('./src/styles/**/*.*', gulp.series('styles'));
+  gulp.watch('./src/scripts/**/*.*', gulp.series('scripts'));
+  gulp.watch('./src/*.html', gulp.series('html'));
+});
+
+gulp.task('dev', gulp.series('build', gulp.parallel('watch', 'serve')));
