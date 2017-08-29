@@ -4,6 +4,7 @@
   "description": "",
   "devDependencies": {
     "stylelint": "^8.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
     "stylelint-config-standard": "^17.0.0"
   }
 }
