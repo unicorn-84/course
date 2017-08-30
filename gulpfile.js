@@ -12,19 +12,26 @@ const browserSync = require('browser-sync').create();
 const less = require('gulp-less');
 const concatCss = require('gulp-concat-css');
 const combiner = require('stream-combiner2').obj;
+const notify = require('gulp-notify');
+const debug = require('gulp-debug');
+const cache = require('gulp-cache');
+const imagemin = require('gulp-imagemin');
+const imageminJpegRecompress = require('imagemin-jpeg-recompress');
+
 
 const isDevelopment = true;
 
 gulp.task('clean', (callback) => {
-  del('./build');
+  del('build');
+  cache.clearAll();
   callback();
 });
 
 gulp.task('serve', () => {
   browserSync.init({
-    server: './build',
+    server: 'build',
   });
-  browserSync.watch('./build/**/*.*', (event) => {
+  browserSync.watch('build/**/*.*', (event) => {
     if (event === 'change') {
       browserSync.reload();
     }
@@ -33,17 +40,19 @@ gulp.task('serve', () => {
 
 gulp.task('html', () =>
   combiner(
-    gulp.src('./src/*.html', { since: gulp.lastRun('html') }),
+    gulp.src('src/*.html', { since: gulp.lastRun('html') }),
     htmlmin({
       collapseWhitespace: true,
       removeComments: true,
     }),
-    gulp.dest('./build')),
+    debug({ title: 'html' }),
+    gulp.dest('build'))
+    .on('error', notify.onError()),
 );
 
 gulp.task('styles', () =>
   combiner(
-    gulp.src('./src/styles/**/main.{scss,less}'),
+    gulp.src('src/styles/**/main.{scss,less}'),
     gulpIf(isDevelopment, sourcemaps.init()),
     gulpIf('*.less', less(), sass()),
     concatCss('main.css'),
@@ -59,12 +68,14 @@ gulp.task('styles', () =>
       },
     }),
     gulpIf(isDevelopment, sourcemaps.write()),
-    gulp.dest('./build/styles')),
+    debug({ title: 'css' }),
+    gulp.dest('build/styles'))
+    .on('error', notify.onError()),
 );
 
 gulp.task('scripts', () =>
   combiner(
-    gulp.src('./src/scripts/*.js'),
+    gulp.src('src/scripts/*.js'),
     gulpIf(isDevelopment, sourcemaps.init()),
     babel({
       presets: [
@@ -78,15 +89,28 @@ gulp.task('scripts', () =>
     }),
     uglify(),
     gulpIf(isDevelopment, sourcemaps.write()),
-    gulp.dest('./build/scripts')),
+    debug({ title: 'scripts' }),
+    gulp.dest('build/scripts'))
+    .on('error', notify.onError()),
 );
 
-gulp.task('build', gulp.series('clean', 'styles', gulp.parallel('scripts', 'html')));
+gulp.task('images', () =>
+  combiner(
+    gulp.src('src/images/**/*.*', { since: gulp.lastRun('images') }),
+    cache(imagemin([
+      imageminJpegRecompress({ max: 70 }),
+    ], { verbose: true })),
+    debug({ title: 'images' }),
+    gulp.dest('build/images'))
+    .on('error', notify.onError()),
+);
+
+gulp.task('build', gulp.series('clean', 'images', 'styles', 'scripts', 'html'));
 
 gulp.task('watch', () => {
-  gulp.watch('./src/styles/**/*.*', gulp.series('styles'));
-  gulp.watch('./src/scripts/**/*.*', gulp.series('scripts'));
-  gulp.watch('./src/*.html', gulp.series('html'));
+  gulp.watch('src/styles/**/*.*', gulp.series('styles'));
+  gulp.watch('src/scripts/**/*.*', gulp.series('scripts'));
+  gulp.watch('src/*.html', gulp.series('html'));
 });
 
 gulp.task('dev', gulp.series('build', gulp.parallel('serve', 'watch')));
