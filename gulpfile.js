@@ -9,6 +9,8 @@ const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
 const browserSync = require('browser-sync').create();
+const less = require('gulp-less');
+const concatCss = require('gulp-concat-css');
 
 const isDevelopment = true;
 
@@ -38,9 +40,10 @@ gulp.task('html', () =>
 );
 
 gulp.task('styles', () =>
-  gulp.src('./src/styles/main.scss')
+  gulp.src('./src/styles/**/main.{scss,less}')
     .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-    .pipe(sass())
+    .pipe(gulpIf('*.less', less(), sass()))
+    .pipe(concatCss('main.css'))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false,
