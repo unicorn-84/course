@@ -11,6 +11,7 @@ const babel = require('gulp-babel');
 const browserSync = require('browser-sync').create();
 const less = require('gulp-less');
 const concatCss = require('gulp-concat-css');
+const combiner = require('stream-combiner2').obj;
 
 const isDevelopment = true;
 
@@ -31,38 +32,41 @@ gulp.task('serve', () => {
 });
 
 gulp.task('html', () =>
-  gulp.src('src/*.html', { since: gulp.lastRun('html') })
-    .pipe(htmlmin({
+  combiner(
+    gulp.src('./src/*.html', { since: gulp.lastRun('html') }),
+    htmlmin({
       collapseWhitespace: true,
       removeComments: true,
-    }))
-    .pipe(gulp.dest('./build')),
+    }),
+    gulp.dest('./build')),
 );
 
 gulp.task('styles', () =>
-  gulp.src('./src/styles/**/main.{scss,less}')
-    .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-    .pipe(gulpIf('*.less', less(), sass()))
-    .pipe(concatCss('main.css'))
-    .pipe(autoprefixer({
+  combiner(
+    gulp.src('./src/styles/**/main.{scss,less}'),
+    gulpIf(isDevelopment, sourcemaps.init()),
+    gulpIf('*.less', less(), sass()),
+    concatCss('main.css'),
+    autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false,
-    }))
-    .pipe(cleanCSS({
+    }),
+    cleanCSS({
       level: {
         1: {
           specialComments: 0,
         },
       },
-    }))
-    .pipe(gulpIf(isDevelopment, sourcemaps.write()))
-    .pipe(gulp.dest('./build/styles')),
+    }),
+    gulpIf(isDevelopment, sourcemaps.write()),
+    gulp.dest('./build/styles')),
 );
 
 gulp.task('scripts', () =>
-  gulp.src('./src/scripts/*.js')
-    .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-    .pipe(babel({
+  combiner(
+    gulp.src('./src/scripts/*.js'),
+    gulpIf(isDevelopment, sourcemaps.init()),
+    babel({
       presets: [
         ['env', {
           targets: {
@@ -71,12 +75,13 @@ gulp.task('scripts', () =>
         }],
         ['es2015'],
       ],
-    }))
-    .pipe(uglify())
-    .pipe(gulpIf(isDevelopment, sourcemaps.write()))
-    .pipe(gulp.dest('./build/scripts')),
+    }),
+    uglify(),
+    gulpIf(isDevelopment, sourcemaps.write()),
+    gulp.dest('./build/scripts')),
 );
-gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'html')));
+
+gulp.task('build', gulp.series('clean', 'styles', gulp.parallel('scripts', 'html')));
 
 gulp.task('watch', () => {
   gulp.watch('./src/styles/**/*.*', gulp.series('styles'));
@@ -84,4 +89,4 @@ gulp.task('watch', () => {
   gulp.watch('./src/*.html', gulp.series('html'));
 });
 
-gulp.task('dev', gulp.series('build', gulp.parallel('watch', 'serve')));
+gulp.task('dev', gulp.series('build', gulp.parallel('serve', 'watch')));
