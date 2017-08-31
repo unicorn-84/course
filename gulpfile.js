@@ -17,7 +17,7 @@ const debug = require('gulp-debug');
 const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const imageminJpegRecompress = require('imagemin-jpeg-recompress');
-
+const order = require('gulp-order');
 
 const isDevelopment = true;
 
@@ -52,9 +52,11 @@ gulp.task('html', () =>
 
 gulp.task('styles', () =>
   combiner(
-    gulp.src('src/styles/**/main.{scss,less}'),
+    gulp.src(['src/styles/less/custom.less', 'src/styles/scss/main.scss']),
     gulpIf(isDevelopment, sourcemaps.init()),
-    gulpIf('*.less', less(), sass()),
+    gulpIf('custom.less', less()),
+    gulpIf('main.scss', sass()),
+    order(['custom.css', 'main.css']),
     concatCss('main.css'),
     autoprefixer({
       browsers: ['last 2 versions'],
@@ -111,6 +113,7 @@ gulp.task('watch', () => {
   gulp.watch('src/styles/**/*.*', gulp.series('styles'));
   gulp.watch('src/scripts/**/*.*', gulp.series('scripts'));
   gulp.watch('src/*.html', gulp.series('html'));
+  gulp.watch('./src/images/**/*.*', gulp.series('images'));
 });
 
 gulp.task('dev', gulp.series('build', gulp.parallel('serve', 'watch')));

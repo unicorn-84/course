@@ -1,3 +1,100 @@
+@import '../material-icons.css';
+
 * {
-  border: 1px solid #f00;
+  //border: 1px solid #f00;
+  //box-sizing: border-box;
+}
+
+.full-screen {
+  min-height: 100vh;
+}
+
+.center-screen {
+  align-items: center;
+}
+
+.section {
+  padding: 5% 0;
+}
+
+.section-title {
+  margin-bottom: 2%;
+}
+
+#hero,
+#order {
+  background: #808080 center center no-repeat;
+  background-size: cover;
+}
+
+#hero {
+  background-image: url('../../images/hero.jpg');
+
+  @media screen and (max-width: 840px) {
+    background-image: url('../../images/hero-md.jpg');
+  }
+
+  @media screen and (max-width: 480px) {
+    background-image: url('../../images/hero-sm.jpg');
+  }
+}
+
+#order {
+  background-image: url('../../images/order.jpg');
+
+  @media screen and (max-width: 840px) {
+    background-image: url('../../images/order-md.jpg');
+  }
+}
+
+i:not([class*='accord-icon']) {
+  font-size: 3rem !important;
+  margin-bottom: 0.8rem;
+}
+
+.column {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.main-title {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.super-title {
+  font-size: 3rem !important;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2.5rem !important;
+  }
+}
+
+#hero {
+  .col-ml-auto,
+  .col-mr-auto {
+    @media screen and (max-width: 600px) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+}
+
+.quo {
+  @media screen and (max-width: 1280px) {
+    display: none;
+  }
+}
+
+.m-bottom {
+  @media screen and (max-width: 1280px) {
+    margin-bottom: 0.4rem;
+  }
+}
+
+.card {
+  flex: 1 1 auto;
+  padding: 1rem;
 }
