@@ -20,7 +20,7 @@ const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const imageminPngquant = require('imagemin-pngquant');
 const order = require('gulp-order');
 
-const isDevelopment = true;
+const isDevelopment = false;
 
 gulp.task('clean', (callback) => {
   del('build');
@@ -45,6 +45,8 @@ gulp.task('html', () =>
     htmlmin({
       collapseWhitespace: true,
       removeComments: true,
+      minifyJS: true,
+      minifyCSS: true,
     }),
     debug({ title: 'html' }),
     gulp.dest('build'))
@@ -78,7 +80,7 @@ gulp.task('styles', () =>
 
 gulp.task('scripts', () =>
   combiner(
-    gulp.src('src/scripts/*.js'),
+    gulp.src(['src/scripts/*.js', 'src/service-worker.js']),
     gulpIf(isDevelopment, sourcemaps.init()),
     babel({
       presets: [
@@ -93,7 +95,7 @@ gulp.task('scripts', () =>
     uglify(),
     gulpIf(isDevelopment, sourcemaps.write()),
     debug({ title: 'scripts' }),
-    gulp.dest('build/scripts'))
+    gulp.dest(file => (file.basename === 'service-worker.js' ? 'build' : 'build/scripts')))
     .on('error', notify.onError()),
 );
 
