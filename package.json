@@ -29,5 +29,8 @@
     "stream-combiner2": "^1.1.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0"
+  },
+  "dependencies": {
+    "imagemin-pngquant": "^5.0.1"
   }
 }

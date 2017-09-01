@@ -17,6 +17,7 @@ const debug = require('gulp-debug');
 const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const imageminJpegRecompress = require('imagemin-jpeg-recompress');
+const imageminPngquant = require('imagemin-pngquant');
 const order = require('gulp-order');
 
 const isDevelopment = true;
@@ -101,13 +102,22 @@ gulp.task('images', () =>
     gulp.src('src/images/**/*.*', { since: gulp.lastRun('images') }),
     cache(imagemin([
       imageminJpegRecompress({ max: 70 }),
+      imageminPngquant({ quality: 70 }),
     ], { verbose: true })),
     debug({ title: 'images' }),
     gulp.dest('build/images'))
     .on('error', notify.onError()),
 );
 
-gulp.task('build', gulp.series('clean', 'images', 'styles', 'scripts', 'html'));
+gulp.task('json', () =>
+  combiner(
+    gulp.src('src/**/*.json', { since: gulp.lastRun('json') }),
+    debug({ title: 'json' }),
+    gulp.dest('build'))
+    .on('error', notify.onError()),
+);
+
+gulp.task('build', gulp.series('clean', 'images', 'styles', 'scripts', 'html', 'json'));
 
 gulp.task('watch', () => {
   gulp.watch('src/styles/**/*.*', gulp.series('styles'));

@@ -1,0 +1,15 @@
+{
+  "short_name": "МАРАФОН",
+  "name": "«НОВЫЙ ВЗГЛЯД НА ДЕТЕЙ» | ОН-ЛАЙН МАРАФОН",
+  "icons": [
+    {
+      "src":"images/icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#fff",
+  "theme_color": "#526e45",
+  "display": "standalone"
+}
