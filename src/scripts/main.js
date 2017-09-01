@@ -1,23 +1,23 @@
-(function (){
-  let modal = document.querySelector('#modal');
-  let modalLink = document.querySelectorAll('.modal-link');
-  let modalClose = document.querySelectorAll('.modal-close');
+(function () {
+  const modal = document.querySelector('#modal');
+  const modalLink = document.querySelectorAll('.modal-link');
+  const modalClose = document.querySelectorAll('.modal-close');
 
-  modalLink.forEach(function (link) {
-    link.addEventListener('click', function (e) {
+  modalLink.forEach((link) => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
       modal.classList.toggle('active');
-    })
+    });
   });
-  modalClose.forEach(function (close) {
-    close.addEventListener('click', function (e) {
+  modalClose.forEach((close) => {
+    close.addEventListener('click', (e) => {
       e.preventDefault();
       modal.classList.toggle('active');
-    })
+    });
   });
-  window.onclick = function(e){
-    if(e.target === modal.querySelector('.modal-overlay')){
+  window.onclick = (e) => {
+    if (e.target === modal.querySelector('.modal-overlay')) {
       modal.classList.toggle('active');
     }
-  }
+  };
 }());
