@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '../material-icons.css';
+
+.text-shadow {
+  text-shadow: 0 2px rgba(0, 0, 0, 0.16);
+}
 
 .full-screen {
   min-height: 100vh;
@@ -16,29 +21,24 @@
   margin-bottom: 2%;
 }
 
-#hero,
-#order {
+#hero {
   background: #808080 center center no-repeat;
   background-size: cover;
 }
 
 #hero {
-  background-image: url('../../images/hero.jpg');
+  position: relative;
 
-  @media screen and (max-width: 840px) {
-    background-image: url('../../images/hero-md.jpg');
+  html.no-js & {
+    background-image: url('../images/hero.jpg');
   }
 
-  @media screen and (max-width: 480px) {
-    background-image: url('../../images/hero-sm.jpg');
+  html.no-webp & {
+    background-image: url('../images/hero.jpg');
   }
-}
 
-#order {
-  background-image: url('../../images/order.jpg');
-
-  @media screen and (max-width: 840px) {
-    background-image: url('../../images/order-md.jpg');
+  html.webp & {
+    background-image: url('../images/hero.webp');
   }
 }
 
@@ -61,6 +61,7 @@ i:not([class*='accord-icon']) {
   font-size: 3rem !important;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  color: complement(#5c5edc) !important;
 
   @media screen and (max-width: 600px) {
     font-size: 2.5rem !important;
@@ -92,4 +93,22 @@ i:not([class*='accord-icon']) {
 .card {
   flex: 1 1 auto;
   padding: 1rem;
+}
+
+.text-dark {
+  color: #1c1d22;
+}
+
+.container {
+  z-index: 2;
+}
+
+.overlay {
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

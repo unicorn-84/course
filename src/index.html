@@ -1,42 +1,55 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
   <meta charset="UTF-8">
   <title>«НОВЫЙ ВЗГЛЯД НА ДЕТЕЙ» | ОН-ЛАЙН МАРАФОН</title>
   <meta name="description" content="Практикум по созданию индивидуальной проактивной семейной карты">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
-  <meta property="og:image" content="images/og-image.jpg"/>
+  <meta property="og:image" content="images/og-image.png"/>
   <meta name="theme-color" content="#526e45">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="manifest" href="/manifest.json">
+  <style>
+    html.no-js img.lazy-image {
+      display: none;
+    }
+    body {
+      margin: 0;
+    }
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-
 <!--HERO-->
 <section id="hero" class="d-flex full-screen center-screen text-light">
+  <div class="overlay"></div>
   <div class="container grid-xl text-center">
     <div class="columns">
       <div class="column col-10 col-xl-12 col-mx-auto">
         <h2 class="main-title text-uppercase text-bold">Он-лайн марафон</h2>
         <br>
-        <h1 class="super-title text-uppercase text-bold text-warning"><span class="quo">&laquo;</span>Новый взгляд на&nbsp;детей<span class="quo">&raquo;</span></h1>
+        <h1 class="text-shadow super-title text-uppercase text-bold"><span class="quo">&laquo;</span>Новый взгляд на&nbsp;детей<span class="quo">&raquo;</span></h1>
         <br>
         <h3 class="col-10 col-xl-12 col-mx-auto">Практикум по&nbsp;созданию индивидуальной проактивной семейной&nbsp;карты</h3>
         <br>
         <h4 class="col-10 col-xl-12 col-mx-auto">Постройте счастливые отношения со&nbsp;своими детьми на&nbsp;всю жизнь, не&nbsp;жертвуя личными интересами и&nbsp;развитием!</h4>
         <br>
-        <h4 class="text-uppercase text-bold">Ближайший старт <span class="h2 text-bold text-secondary text-error"><u>21&nbsp;августа!</u>!</span></h4>
+        <h4 class="text-uppercase text-bold">Ближайший старт <span class="h2 text-bold"><u>21&nbsp;августа!</u>!</span></h4>
         <h4 class="text-uppercase text-bold">Не упустите свой&nbsp;шанс!</h4>
       </div>
     </div>
     <br>
     <div class="columns">
-      <div class="column col-3 col-xl-4 col-md-6 col-sm-10 col-xs-12 col-ml-auto">
+      <div class="column col-3 col-xl-4 col-md-5 col-sm-10 col-xs-12 col-ml-auto">
         <button class="btn btn-primary btn-block btn-lg text-uppercase text-ellipsis modal-link">Забронировать место</button>
       </div>
-      <div class="column col-3 col-xl-4 col-md-6 col-sm-10 col-xs-12 col-mr-auto">
-        <a href="#program" class="btn btn-primary btn-block btn-lg text-uppercase text-ellipsis">Посмотреть программу</a>
+      <div class="column col-3 col-xl-4 col-md-5 col-sm-10 col-xs-12 col-mr-auto">
+        <button id="btn-scroll" class="btn btn-primary btn-block btn-lg text-uppercase text-ellipsis">Посмотреть программу</button>
       </div>
     </div>
     <div class="columns">
@@ -269,7 +282,14 @@
         <div class="tile mb-2">
           <div class="tile-icon">
             <figure class="avatar avatar-xl">
-              <img src="images/testimonial-1.jpg" alt="Аватар" />
+              <noscript>
+                <picture>
+                  <source srcset="images/testimonial-1.webp" type="image/webp">
+                  <source srcset="images/testimonial-1.jpg" type="image/jpeg">
+                  <img src="images/testimonial-1.jpg" alt="Ксения Мерида">
+                </picture>
+              </noscript>
+              <img src="" data-src="images/testimonial-1.jpg" data-webp="images/testimonial-1.webp" alt="Ксения Мерида" class="lazy-image"/>
             </figure>
           </div>
           <div class="tile-content">
@@ -300,7 +320,14 @@
         <div class="tile mb-2">
           <div class="tile-icon">
             <figure class="avatar avatar-xl">
-              <img src="images/testimonial-2.jpg" alt="Аватар"/>
+              <noscript>
+                <picture>
+                  <source srcset="images/testimonial-2.webp" type="image/webp">
+                  <source srcset="images/testimonial-2.jpg" type="image/jpeg">
+                  <img src="images/testimonial-2.jpg" alt="Инга"/>
+                </picture>
+              </noscript>
+              <img src="" data-src="images/testimonial-2.jpg" data-webp="images/testimonial-2.webp" alt="Инга" class="lazy-image"/>
             </figure>
           </div>
           <div class="tile-content">
@@ -432,7 +459,7 @@
     <br>
     <br>
     <div class="columns">
-      <div class="column col-4 col-lg-4 col-md-6 col-sm-10 col-xs-12 col-mx-auto">
+      <div class="column col-3 col-lg-3 col-md-5 col-sm-10 col-xs-12 col-mx-auto">
         <button class="btn btn-primary btn-block btn-lg text-uppercase text-ellipsis modal-link">забронировать место</button>
       </div>
     </div>
@@ -452,7 +479,14 @@
     </div>
     <div class="columns center-screen">
       <div class="column col-6 col-xl-8 col-lg-10 col-md-12 col-mx-auto m-bottom">
-        <img src="images/author.jpg" alt="Виктория Лапикова" class="img-responsive">
+        <noscript>
+          <picture>
+            <source srcset="images/author.webp" type="image/webp">
+            <source srcset="images/author.jpg" type="image/jpeg">
+            <img src="images/author.jpg" alt="Виктория Лапикова" class="img-responsive">
+          </picture>
+        </noscript>
+        <img src="" data-src="images/author.jpg" data-webp="images/author.webp" alt="Виктория Лапикова" class="img-responsive lazy-image">
       </div>
       <div class="column col-5 col-xl-8 col-lg-10 col-md-12 col-mx-auto">
         <h3>Всем привет!</h3>
@@ -571,27 +605,30 @@
     </div>
   </div>
 </section>
+<div class="container grid-xl">
+  <div class="divider"></div>
+</div>
 
 <!--ORDER-->
-<section id="order" class="d-flex full-screen center-screen text-light">
+<section id="order" class="d-flex full-screen center-screen bg-secondary">
   <div class="container grid-xl text-center">
     <div class="columns">
       <div class="column col-10 col-lg-12 col-mx-auto">
-        <h2 class="main-title text-uppercase text-bold text-success">Сколько Вы готовы заплатить за&nbsp;счастье своих детей и&nbsp;гармонию в&nbsp;семье?</h2>
+        <h2 class="main-title text-uppercase text-bold">Сколько Вы готовы заплатить за&nbsp;счастье своих детей и&nbsp;гармонию в&nbsp;семье?</h2>
         <br>
-        <h1 class="main-title text-uppercase text-bold text-secondary">Правильно, это бесценно!</h1>
+        <h1 class="main-title text-uppercase text-bold text-dark">Правильно, это бесценно!</h1>
         <br>
-        <h3 class="main-title text-uppercase">А&nbsp;стоимость моего марафона составляет всего <span class="h2 text-bold text-gray"><u>2990&nbsp;рублей</u>!</span></h3>
+        <h3 class="main-title text-uppercase">А&nbsp;стоимость моего марафона составляет всего<br><span class="h2 text-bold"><u>2990&nbsp;рублей</u>!</span></h3>
       </div>
     </div>
     <br>
     <div class="columns">
-      <div class="column col-4 col-lg-4 col-md-6 col-sm-10 col-xs-12 col-mx-auto">
+      <div class="column col-3 col-lg-4 col-md-5 col-sm-10 col-xs-12 col-mx-auto">
         <button class="btn btn-primary btn-block btn-lg text-uppercase text-ellipsis modal-link">Участвовать</button>
       </div>
     </div>
     <div class="columns">
-      <div class="column col-4 col-lg-4 col-md-6 col-sm-10 col-xs-12 col-mx-auto">
+      <div class="column col-3 col-lg-4 col-md-6 col-sm-10 col-xs-12 col-mx-auto">
         <p class="text-italic">*Первая неделя марафона бесплатна для&nbsp;всех&nbsp;участников</p>
       </div>
     </div>
@@ -599,16 +636,16 @@
     <div class="column col-6 col-sm-10 col-xs-12 col-mx-auto">
       <div class="columns">
         <div class="column col-3 col-xs-6">
-          <a class="text-light text-large" href="#">ВКонтакте</a>
+          <a class="text-large" href="#">ВКонтакте</a>
         </div>
         <div class="column col-3 col-xs-6">
-          <a class="text-light text-large" href="#">Facebook</a>
+          <a class="text-large" href="#">Facebook</a>
         </div>
         <div class="column col-3 col-xs-6">
-          <a class="text-light text-large" href="#">Twitter</a>
+          <a class="text-large" href="#">Twitter</a>
         </div>
         <div class="column col-3 col-xs-6">
-          <a class="text-light text-large" href="#">Instagram</a>
+          <a class="text-large" href="#">Instagram</a>
         </div>
       </div>
     </div>
@@ -654,17 +691,56 @@
   </div>
 </div>
 
-<script src="scripts/main.js"></script>
+<!--MODERNIZR-->
+<script>
+  /*! modernizr 3.5.0 (Custom Build) | MIT *
+   * https://modernizr.com/download/?-webp-setclasses !*/
+  !function(e,n,A){function o(e,n){return typeof e===n}function t(){var e,n,A,t,a,i,l;for(var f in r)if(r.hasOwnProperty(f)){if(e=[],n=r[f],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(A=0;A<n.options.aliases.length;A++)e.push(n.options.aliases[A].toLowerCase());for(t=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)i=e[a],l=i.split("."),1===l.length?Modernizr[l[0]]=t:(!Modernizr[l[0]]||Modernizr[l[0]]instanceof Boolean||(Modernizr[l[0]]=new Boolean(Modernizr[l[0]])),Modernizr[l[0]][l[1]]=t),s.push((t?"":"no-")+l.join("-"))}}function a(e){var n=u.className,A=Modernizr._config.classPrefix||"";if(c&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+A+"no-js(\\s|$)");n=n.replace(o,"$1"+A+"js$2")}Modernizr._config.enableClasses&&(n+=" "+A+e.join(" "+A),c?u.className.baseVal=n:u.className=n)}function i(e,n){if("object"==typeof e)for(var A in e)f(e,A)&&i(A,e[A]);else{e=e.toLowerCase();var o=e.split("."),t=Modernizr[o[0]];if(2==o.length&&(t=t[o[1]]),"undefined"!=typeof t)return Modernizr;n="function"==typeof n?n():n,1==o.length?Modernizr[o[0]]=n:(!Modernizr[o[0]]||Modernizr[o[0]]instanceof Boolean||(Modernizr[o[0]]=new Boolean(Modernizr[o[0]])),Modernizr[o[0]][o[1]]=n),a([(n&&0!=n?"":"no-")+o.join("-")]),Modernizr._trigger(e,n)}return Modernizr}var s=[],r=[],l={_version:"3.5.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var A=this;setTimeout(function(){n(A[e])},0)},addTest:function(e,n,A){r.push({name:e,fn:n,options:A})},addAsyncTest:function(e){r.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=l,Modernizr=new Modernizr;var f,u=n.documentElement,c="svg"===u.nodeName.toLowerCase();!function(){var e={}.hasOwnProperty;f=o(e,"undefined")||o(e.call,"undefined")?function(e,n){return n in e&&o(e.constructor.prototype[n],"undefined")}:function(n,A){return e.call(n,A)}}(),l._l={},l.on=function(e,n){this._l[e]||(this._l[e]=[]),this._l[e].push(n),Modernizr.hasOwnProperty(e)&&setTimeout(function(){Modernizr._trigger(e,Modernizr[e])},0)},l._trigger=function(e,n){if(this._l[e]){var A=this._l[e];setTimeout(function(){var e,o;for(e=0;e<A.length;e++)(o=A[e])(n)},0),delete this._l[e]}},Modernizr._q.push(function(){l.addTest=i}),Modernizr.addAsyncTest(function(){function e(e,n,A){function o(n){var o=n&&"load"===n.type?1==t.width:!1,a="webp"===e;i(e,a&&o?new Boolean(o):o),A&&A(n)}var t=new Image;t.onerror=o,t.onload=o,t.src=n}var n=[{uri:"data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=",name:"webp"},{uri:"data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==",name:"webp.alpha"},{uri:"data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA",name:"webp.animation"},{uri:"data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=",name:"webp.lossless"}],A=n.shift();e(A.name,A.uri,function(A){if(A&&"load"===A.type)for(var o=0;o<n.length;o++)e(n[o].name,n[o].uri)})}),t(),a(s),delete l.addTest,delete l.addAsyncTest;for(var p=0;p<Modernizr._q.length;p++)Modernizr._q[p]();e.Modernizr=Modernizr}(window,document);
+</script>
+
+<!--INTERSECTION OBSERVER-->
+<script>
+  (function(){
+    const imgElements = [...document.querySelectorAll('.lazy-image')];
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (document.documentElement.classList.contains('webp')) {
+            entry.target.src = entry.target.dataset.webp;
+          } else {
+            entry.target.src = entry.target.dataset.src;
+          }
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '25% 0px',
+    });
+
+    window.addEventListener('load', () => {
+      imgElements.forEach((img) => {
+        io.observe(img);
+      });
+    }, false);
+  }());
+</script>
+
+<script src="scripts/main.js" async></script>
+
 </body>
+
+<!--SERVICE WORKER-->
 <script>
   if ('serviceWorker' in navigator) {
-    console.log("Will the service worker register?");
     navigator.serviceWorker.register('service-worker.js')
       .then(function(reg){
-        console.log("Yes, it did.");
+        console.log("serviceWorker registered");
       }).catch(function(err) {
-      console.log("No it didn't. This happened: ", err)
+      console.log("serviceWorker not registered. This happened: ", err)
     });
   }
 </script>
+
 </html>
+<link rel="stylesheet" href="styles/main.css" media="all">
