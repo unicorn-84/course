@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '../material-icons.css';
 
+$primary-color: #5c5edc;
+
 .text-shadow {
   text-shadow: 0 2px rgba(0, 0, 0, 0.16);
 }
@@ -91,7 +93,7 @@ i:not([class*='accord-icon']) {
 }
 
 .card {
-  flex: 1 1 auto;
+  flex: auto;
   padding: 1rem;
 }
 
@@ -115,4 +117,68 @@ i:not([class*='accord-icon']) {
 
 .break {
   padding: 2%;
+}
+
+.icon {
+  height: 5em;
+  width: 5em;
+  fill: $primary-color;
+  transition: fill 0.3s ease-out;
+
+  .card:hover & {
+    fill: darken($primary-color, 10%);
+  }
+}
+
+.social {
+  height: 2em;
+  width: 2em;
+
+  &:hover, &:focus {
+    fill: darken($primary-color, 10%);
+  }
+}
+
+#order {
+  a {
+    text-decoration: none;
+    padding: 1em;
+  }
+}
+.tile {
+  flex-direction: column;
+  padding-right: 1em;
+
+  @media screen and (max-width: 960px) {
+    padding-right: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  @media screen and (max-width: 600px) {
+    align-items: center !important;
+  }
+}
+
+.tile-content {
+  @media screen and (max-width: 600px) {
+    text-align: center;
+  }
+}
+
+.tile-icon {
+  margin-bottom: 1rem;
+}
+
+.tile-subtitle {
+  line-height: 1.4 !important;
+  text-align: left !important;
+
+  @media screen and (max-width: 600px) {
+    padding-top: 0.8rem;
+  }
+}
+
+.accordion-header {
+  padding-left: 0 !important;
 }
