@@ -168,6 +168,8 @@ i:not([class*='accord-icon']) {
 }
 
 .tile-content {
+  width: 100%;
+
   @media screen and (max-width: 600px) {
     text-align: center;
   }
