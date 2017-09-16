@@ -93,6 +93,11 @@ i:not([class*='accord-icon']) {
   padding: 1rem;
 }
 
+.card-image,
+.card-header {
+  border: 1px solid #000;
+}
+
 .text-dark {
   color: #1c1d22;
 }
@@ -124,6 +129,7 @@ i:not([class*='accord-icon']) {
   width: 4rem;
   fill: $primary-color;
   transition: fill 0.3s ease-out;
+  border: 1px solid #000;
 
   @media screen and (max-width: 480px) {
     height: 48px;
@@ -168,6 +174,8 @@ i:not([class*='accord-icon']) {
 }
 
 .tile-content {
+  width: 100%;
+
   @media screen and (max-width: 600px) {
     text-align: center;
   }
