@@ -19,6 +19,7 @@
     "gulp-less": "^3.3.2",
     "gulp-notify": "^3.0.0",
     "gulp-order": "^1.1.1",
+    "gulp-rigger": "^0.5.8",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-svg-sprites": "^4.1.2",

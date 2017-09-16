@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import '../material-icons.css';
-
 $primary-color: #5c5edc;
 
 .text-shadow {
@@ -63,10 +60,9 @@ i:not([class*='accord-icon']) {
   font-size: 3rem !important;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  color: complement(#5c5edc) !important;
 
-  @media screen and (max-width: 600px) {
-    font-size: 2.5rem !important;
+  @media screen and (max-width: 480px) {
+    font-size: 2rem !important;
   }
 }
 
@@ -93,7 +89,7 @@ i:not([class*='accord-icon']) {
 }
 
 .card {
-  flex: auto;
+  flex: 1;
   padding: 1rem;
 }
 
@@ -117,13 +113,22 @@ i:not([class*='accord-icon']) {
 
 .break {
   padding: 2%;
+
+  @media screen and (max-width: 480px) {
+    padding: 5%;
+  }
 }
 
 .icon {
-  height: 5em;
-  width: 5em;
+  height: 4rem;
+  width: 4rem;
   fill: $primary-color;
   transition: fill 0.3s ease-out;
+
+  @media screen and (max-width: 480px) {
+    height: 48px;
+    width: 48px;
+  }
 
   .card:hover & {
     fill: darken($primary-color, 10%);
@@ -134,7 +139,8 @@ i:not([class*='accord-icon']) {
   height: 2em;
   width: 2em;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     fill: darken($primary-color, 10%);
   }
 }
@@ -145,6 +151,7 @@ i:not([class*='accord-icon']) {
     padding: 1em;
   }
 }
+
 .tile {
   flex-direction: column;
   padding-right: 1em;

@@ -19,6 +19,7 @@ const imageminPngquant = require('imagemin-pngquant');
 const imageminWebp = require('imagemin-webp');
 const order = require('gulp-order');
 const svgSprite = require('gulp-svg-sprites');
+const rigger = require('gulp-rigger');
 
 const isDevelopment = false;
 
@@ -55,7 +56,7 @@ gulp.task('styles', () => (
     order(['custom.css', 'main.css']),
     concatCss('main.css'),
     autoprefixer({
-      browsers: ['last 2 versions'],
+      browsers: ['last 10 versions'],
       cascade: false,
     }),
     cleanCSS({
@@ -74,7 +75,8 @@ gulp.task('styles', () => (
 // SCRIPTS
 gulp.task('scripts', () => (
   combiner(
-    gulp.src(['src/scripts/**/*.js', 'src/service-worker.js'], { since: gulp.lastRun('webp') }),
+    gulp.src(['src/scripts/main.js', 'src/service-worker.js'], { since: gulp.lastRun('scripts') }),
+    rigger(),
     gulpIf(isDevelopment, sourcemaps.init()),
     babel({
       presets: [
@@ -109,11 +111,14 @@ gulp.task('webp', () => (
 
 gulp.task('jpg', () => (
   combiner(
-    gulp.src('src/images/**/*.jpg', { since: gulp.lastRun('jpg') }),
+    gulp.src(['src/images/**/*.jpg', 'src/*.jpg'], { since: gulp.lastRun('jpg') }),
     imagemin([
       imageminJpegRecompress(),
     ], { verbose: true }),
     gulp.dest((file) => {
+      if (file.path.indexOf('images') === -1) {
+        return 'build';
+      }
       file.path = file.base + file.basename;
       return 'build/images';
     })).on('error', notify.onError())
@@ -121,11 +126,14 @@ gulp.task('jpg', () => (
 
 gulp.task('png', () => (
   combiner(
-    gulp.src('src/images/**/*.png', { since: gulp.lastRun('png') }),
+    gulp.src(['src/images/**/*.png', 'src/*.png'], { since: gulp.lastRun('png') }),
     imagemin([
       imageminPngquant(),
     ], { verbose: true }),
     gulp.dest((file) => {
+      if (file.path.indexOf('images') === -1) {
+        return 'build';
+      }
       file.path = file.base + file.basename;
       return 'build/images';
     })).on('error', notify.onError())
@@ -145,7 +153,7 @@ gulp.task('video', () => (
 // ASSETS
 gulp.task('assets', () => (
   combiner(
-    gulp.src('src/*.json', { since: gulp.lastRun('assets') }),
+    gulp.src('src/*.{json,ico}', { since: gulp.lastRun('assets') }),
     gulp.dest('build')).on('error', notify.onError())
 ));
 
