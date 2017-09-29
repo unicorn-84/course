@@ -9,6 +9,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?ver=1">
   <meta name="theme-color" content="#5c5edc">
   <link rel="manifest" href="/manifest.json">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <style>
     html.no-js img.lazy-image {
       display: none;
@@ -40,7 +41,7 @@
         <div class="break"></div>
         <h5 class="col-10 col-xl-12 col-mx-auto text-shadow">Постройте счастливые отношения со&nbsp;своими детьми на&nbsp;всю жизнь, не&nbsp;жертвуя личными интересами и&nbsp;развитием!</h5>
         <div class="break"></div>
-        <h4 class="text-uppercase text-bold text-shadow">Ближайший старт <span class="h2 text-bold"><u>21&nbsp;августа!</u>!</span></h4>
+        <h4 class="d-none text-uppercase text-bold text-shadow">Ближайший старт <span class="h2 text-bold"><u>21&nbsp;августа!</u>!</span></h4>
         <h4 class="text-uppercase text-bold text-shadow">Не упустите свой&nbsp;шанс!</h4>
       </div>
     </div>
@@ -162,7 +163,7 @@
 </div>
 
 <!--PROMO-->
-<section class="section">
+<section class="section d-none">
   <div class="container grid-xl">
     <div class="columns">
       <div class="column col-6 col-xl-10 col-md-10 col-xs-12 section-title col-mx-auto text-center">
@@ -179,7 +180,7 @@
     </div>
   </div>
 </section>
-<div class="container grid-xl">
+<div class=" d-none container grid-xl">
     <div class="divider"></div>
 </div>
 
@@ -705,7 +706,7 @@
       </div>
     </div>
     <div class="break"></div>
-    <div class="column col-4 col-sm-10 col-xs-12 col-mx-auto">
+    <div class="d-none column col-4 col-sm-10 col-xs-12 col-mx-auto">
       <a class="text-large" href="#" title="Youtube">
         <svg class="icon social">
           <use xlink:href="images/symbols.svg#youtube"></use>
@@ -720,47 +721,63 @@
   </div>
 </section>
 
+<!--TOASTS-->
+<div class="d-none container grid-sm text-center" id="toast">
+  <div class="toast toast-primary">
+    <button class="btn btn-clear float-right toast-close"></button>
+    <span class="h6">
+      Спасибо за регистрацию.<br>Я свяжусь с Вами в ближайшее время.
+    </span>
+  </div>
+</div>
+
 <!--MODAL-->
 <div class="modal" id="modal">
   <div class="modal-overlay"></div>
   <div class="modal-container">
-    <div class="modal-header">
-      <button class="btn btn-clear float-right modal-close"></button>
-      <div class="modal-title h5 text-uppercase text-center text-ellipsis">
-        форма заказа
-      </div>
-    </div>
-    <div class="modal-body">
-      <div class="content">
-        <div class="form-group">
-          <label class="form-label" for="input-name">Имя</label>
-          <input class="form-input" type="text" id="input-name" placeholder="Ваше имя" required/>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="input-email">Email</label>
-          <input class="form-input" type="email" id="input-email" placeholder="Ваш email" required/>
+    <form id="requestForm">
+      <div class="modal-header">
+        <button class="btn btn-clear float-right modal-close"></button>
+        <div class="modal-title h5 text-uppercase text-center text-ellipsis">
+          форма заказа
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <div class="columns">
-        <div class="column col-6">
-          <button class="btn btn-primary text-capitalize text-ellipsis btn-block">заказать</button>
-        </div>
-        <div class="column col-6">
-          <button class="btn text-capitalize text-ellipsis btn-block modal-close">отмена</button>
+      <div class="modal-body">
+        <div class="content">
+          <div class="form-group">
+            <label class="form-label" for="requestName">Имя</label>
+            <input class="form-input" type="text" placeholder="Ваше имя" required id="requestName" name="requestName" maxlength="50"  title="Максимум 50 символов"/>
+            <p class="d-none form-input-hint" id="nameHint">Некорректное имя.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="requestEmail">Email</label>
+            <input class="form-input" type="email" id="requestEmail" name="requestEmail" placeholder="Ваш email" required maxlength="50" title="Максимум 50 символов"/>
+            <p class="d-none form-input-hint" id="emailHint">Некорректный email.</p>
+          </div>
         </div>
       </div>
-    </div>
-
+      <div class="modal-footer">
+        <div class="columns">
+          <div class="column col-6">
+            <button type="submit" id="submit" class="btn btn-primary text-capitalize text-ellipsis btn-block">заказать</button>
+          </div>
+          <div class="column col-6">
+            <button type="button" class="btn text-capitalize text-ellipsis btn-block modal-close">отмена</button>
+          </div>
+        </div>
+      </div>
+    </form>
     <div class="column col-11 col-mx-auto">
-      <p class="text-center">Нажимая кнопку <samp><span class="text-capitalize label bg-primary text-light">заказать</span></samp>, Вы соглашаетесь с <a target="_blank" href="policy.html" rel="noopener"><span class="text-capitalize">политикой&nbsp;конфиденциальности</span></a>.</p>
+      <p class="text-center">Нажимая кнопку <span class="text-capitalize text-primary ">заказать</span>, Вы соглашаетесь с <a target="_blank" href="policy.html" rel="noopener"><span class="text-capitalize">политикой&nbsp;конфиденциальности</span></a>.</p>
     </div>
   </div>
 </div>
 
-<script src="scripts/main.js?ver=1" async></script>
+<script src="scripts/main.js?ver=2" async></script>
+<script>
+  !function(a,b){"function"==typeof define&&define.amd?define([],function(){return a.svg4everybody=b()}):"object"==typeof module&&module.exports?module.exports=b():a.svg4everybody=b()}(this,function(){function a(a,b,c){if(c){var d=document.createDocumentFragment(),e=!b.hasAttribute("viewBox")&&c.getAttribute("viewBox");e&&b.setAttribute("viewBox",e);for(var f=c.cloneNode(!0);f.childNodes.length;)d.appendChild(f.firstChild);a.appendChild(d)}}function b(b){b.onreadystatechange=function(){if(4===b.readyState){var c=b._cachedDocument;c||(c=b._cachedDocument=document.implementation.createHTMLDocument(""),c.body.innerHTML=b.responseText,b._cachedTarget={}),b._embeds.splice(0).map(function(d){var e=b._cachedTarget[d.id];e||(e=b._cachedTarget[d.id]=c.getElementById(d.id)),a(d.parent,d.svg,e)})}},b.onreadystatechange()}function c(c){function e(){for(var c=0;c<o.length;){var h=o[c],i=h.parentNode,j=d(i),k=h.getAttribute("xlink:href")||h.getAttribute("href");if(!k&&g.attributeName&&(k=h.getAttribute(g.attributeName)),j&&k){if(f)if(!g.validate||g.validate(k,j,h)){i.removeChild(h);var l=k.split("#"),q=l.shift(),r=l.join("#");if(q.length){var s=m[q];s||(s=m[q]=new XMLHttpRequest,s.open("GET",q),s.send(),s._embeds=[]),s._embeds.push({parent:i,svg:j,id:r}),b(s)}else a(i,j,document.getElementById(r))}else++c,++p}else++c}(!o.length||o.length-p>0)&&n(e,67)}var f,g=Object(c),h=/\bTrident\/[567]\b|\bMSIE (?:9|10)\.0\b/,i=/\bAppleWebKit\/(\d+)\b/,j=/\bEdge\/12\.(\d+)\b/,k=/\bEdge\/.(\d+)\b/,l=window.top!==window.self;f="polyfill"in g?g.polyfill:h.test(navigator.userAgent)||(navigator.userAgent.match(j)||[])[1]<10547||(navigator.userAgent.match(i)||[])[1]<537||k.test(navigator.userAgent)&&l;var m={},n=window.requestAnimationFrame||setTimeout,o=document.getElementsByTagName("use"),p=0;f&&e()}function d(a){for(var b=a;"svg"!==b.nodeName.toLowerCase()&&(b=b.parentNode););return b}return c});svg4everybody();
+</script>
 
 </body>
 </html>
-<link rel="stylesheet" href="styles/main.css?ver=1" media="all">
+<link rel="stylesheet" href="styles/main.css?ver=2" media="all">

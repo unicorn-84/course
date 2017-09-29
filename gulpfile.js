@@ -20,6 +20,7 @@ const imageminWebp = require('imagemin-webp');
 const order = require('gulp-order');
 const svgSprite = require('gulp-svg-sprites');
 const rigger = require('gulp-rigger');
+const svgmin = require('gulp-svgmin');
 
 const isDevelopment = false;
 
@@ -153,7 +154,7 @@ gulp.task('video', () => (
 // ASSETS
 gulp.task('assets', () => (
   combiner(
-    gulp.src('src/*.{json,ico}', { since: gulp.lastRun('assets') }),
+    gulp.src('src/*.{json,ico,php}', { since: gulp.lastRun('assets') }),
     gulp.dest('build')).on('error', notify.onError())
 ));
 
@@ -172,6 +173,11 @@ gulp.task('svg', () => (
     svgSprite({
       mode: 'symbols',
       preview: false,
+    }),
+    svgmin({
+      plugins: [{
+        cleanupIDs: false,
+      }],
     }),
     gulp.dest((file) => {
       file.path = file.base + file.basename;
