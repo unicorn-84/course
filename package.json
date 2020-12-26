@@ -1,10 +1,23 @@
 {
   "name": "course",
-  "version": "0.0.1",
-  "scripts": {
-    "build": "gulp build"
+  "description": "Online marathon of Victoria Lapikova",
+  "version": "0.0.0",
+  "private": true,
+  "author": "unicorn-84 <unicorn-84@ya.ru> (https://github.com/unicorn-84)",
+  "license": "Apache License 2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unicorn-84/course.git"
   },
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/unicorn-84/course/issues"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp dev",
+    "version": "npm run build && git add -A build -f",
+    "postversion": "git push && git push --tags && rm -rf build"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
@@ -35,12 +48,22 @@
     "spectre.css": "^0.3.2",
     "stream-combiner2": "^1.1.1",
     "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^17.0.0"
+    "stylelint-config-standard": "^17.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
   },
   "dependencies": {
     "imagemin": "^5.3.1",
     "imagemin-pngquant": "^5.0.1",
     "imagemin-webp": "^4.0.0",
     "lozad": "0.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
