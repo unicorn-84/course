@@ -1,6 +1,9 @@
 {
   "name": "course",
   "version": "0.0.1",
+  "scripts": {
+    "build": "gulp build"
+  },
   "description": "",
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -198,6 +198,12 @@ gulp.task('serve', () => {
   });
 });
 
+// ASSETS
+gulp.task('assets', (cb) => {
+  gulp.src(['src/robots.txt', 'src/manifest.json', 'src/favicon.ico']).pipe(gulp.dest('build'));
+  cb();  
+})
+
 
 // WATCH
 gulp.task('watch', () => {
@@ -213,7 +219,7 @@ gulp.task('watch', () => {
 
 
 // BUILD
-gulp.task('build', gulp.series('clean', gulp.parallel('images', 'video', 'html', 'styles', 'scripts', 'assets', 'fonts', 'svg')));
+gulp.task('build', gulp.series('clean', gulp.parallel('images', 'video', 'html', 'styles', 'scripts', 'assets', 'fonts', 'svg', 'assets')));
 
 
 // DEV
