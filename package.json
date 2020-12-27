@@ -16,7 +16,7 @@
     "build": "gulp build",
     "dev": "gulp dev",
     "version": "npm run build && git add -A build -f",
-    "postversion": "git push && git push --tags && rm -rf build"
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
