@@ -1,7 +1,7 @@
 {
   "name": "course",
   "description": "Online marathon of Victoria Lapikova",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "author": "unicorn-84 <unicorn-84@ya.ru> (https://github.com/unicorn-84)",
   "license": "Apache License 2.0",
