@@ -48,22 +48,12 @@
     "spectre.css": "^0.3.2",
     "stream-combiner2": "^1.1.1",
     "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^17.0.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11"
+    "stylelint-config-standard": "^17.0.0"
   },
   "dependencies": {
     "imagemin": "^5.3.1",
     "imagemin-pngquant": "^5.0.1",
     "imagemin-webp": "^4.0.0",
     "lozad": "0.0.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   }
 }
