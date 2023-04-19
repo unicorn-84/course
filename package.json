@@ -9,7 +9,7 @@
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-autoprefixer": "^4.0.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-clean-css": "^3.7.0",
     "gulp-concat-css": "^2.3.0",
@@ -31,7 +31,7 @@
     "material-design-icons": "^3.0.1",
     "spectre.css": "^0.3.2",
     "stream-combiner2": "^1.1.1",
-    "stylelint": "^8.0.0",
+    "stylelint": "^15.5.0",
     "stylelint-config-standard": "^17.0.0"
   },
   "dependencies": {
